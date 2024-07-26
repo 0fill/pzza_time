@@ -19,7 +19,6 @@ def sucess_sale(sale:Sales, order: Order):
         for ingredient in item.ingredients:
             sale.profit += filemanager.load_ingredients().get(ingredient)
 
-
-
-
-
+def costum_pizza():
+    while True:
+        ingredient = chose_ingredinet(filemanager.load_ingredients().keys())

@@ -32,3 +32,16 @@ def error_massage_NotNumber():
 
 def error_massage_OutOfRange(min, max):
     print(f"enter a number between {min} and {max}")
+
+def chose_ingredinet(ingrediants: list)
+    for ingrediant in ingrediants:
+        print(ingrediant, end=" ")
+    choice = input("chose ingredient")
+    if choice in ingrediants:
+        return choice
+    else:
+        for ingrediant in ingrediants:
+            if choice in ingrediant:
+                if input(f"did you mean {ingrediant}?") == "y":
+                    return ingrediant
+
