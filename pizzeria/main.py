@@ -1,5 +1,5 @@
 from controls import *
-
+from models import *
 
 def run():
     info = Sales()
@@ -47,13 +47,15 @@ def run():
                         break
         elif choice == 2:
             choice2 = check_for_input(1, 2)
-
             if choice2 == 1:
                 Payment.cash_order(order)
-                sucess_sale(info, order)
             elif choice2 == 2:
                 Payment.card_order(order)
-                sucess_sale(info, order)
+            sucess_sale(info, order)
+            filemanager.save(Parses.order_saves(order))
+        elif choice == 3:
+            pass        #soon
+
 
 
 

@@ -1,4 +1,5 @@
 import json
+from controls import *
 
 
 class Sales:
@@ -39,15 +40,20 @@ class Order:
 class Payment:
     @staticmethod
     def cash_order(order: Order):
-        return sum(n for n in order.orders.ingredients)
+        print(f'you payed {get_check(order)} throu cash')
 
     @staticmethod
     def card_order(order: Order):
-        return sum(n for n in order.orders.ingredients)
+        print(f"you payed {get_check(order)} throu card")
 
 
+class Parses:
 
-#class Parses:
+    @staticmethod
+    def order_saves(order: Order):
+        return_value: str = ""
+        for pizza in order.orders:
+            return_value += pizza.ingredients + '\n'
 
 class filemanager:
 

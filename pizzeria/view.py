@@ -31,6 +31,8 @@ def pay_menu():
     2- card    
     """)
 
+def menu_admin():
+    pass
 
 def get_input():
     return input("What do you want? ")
