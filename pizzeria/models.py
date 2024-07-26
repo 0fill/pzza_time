@@ -30,13 +30,22 @@ class Pizza():
 
 class Order:
     def __init__(self):
-        self.orders = []
+        self.orders: list = []
 
     def add_order(self, order: Pizza):
         self.orders.append(order)
 
 
-#class payment:
+class Payment:
+    @staticmethod
+    def cash_order(order: Order):
+        return sum(n for n in order.orders.ingredients)
+
+    @staticmethod
+    def card_order(order: Order):
+        return sum(n for n in order.orders.ingredients)
+
+
 
 #class Parses:
 

@@ -22,3 +22,11 @@ def sucess_sale(sale:Sales, order: Order):
 def costum_pizza():
     while True:
         ingredient = chose_ingredinet(filemanager.load_ingredients().keys())
+
+def get_check(order:Order):
+    ingr = filemanager.load_ingredients()
+    total = 0
+    for a in order:
+        for b in a:
+            total += ingr.get(b)
+

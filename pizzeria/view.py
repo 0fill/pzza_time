@@ -13,6 +13,7 @@ def order_menu():
     1 -  chose pizza
     2 -  costum pizza""")
 
+
 def pizza_list():
     print(f"""
 1 - Margherita (tomato sauce, mozzarella, basil)
@@ -24,16 +25,26 @@ def pizza_list():
     """)
 
 
+def pay_menu():
+    print(f"""
+    1- cash
+    2- card    
+    """)
+
+
 def get_input():
     return input("What do you want? ")
+
 
 def error_massage_NotNumber():
     print(f"enter a valid number")
 
-def error_massage_OutOfRange(min, max):
-    print(f"enter a number between {min} and {max}")
 
-def chose_ingredinet(ingrediants: list)
+def error_massage_OutOfRange(minn, maxx):
+    print(f"enter a number between {minn} and {maxx}")
+
+
+def chose_ingredinet(ingrediants: list):
     for ingrediant in ingrediants:
         print(ingrediant, end=" ")
     choice = input("chose ingredient")
@@ -44,4 +55,3 @@ def chose_ingredinet(ingrediants: list)
             if choice in ingrediant:
                 if input(f"did you mean {ingrediant}?") == "y":
                     return ingrediant
-
