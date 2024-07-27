@@ -33,6 +33,7 @@ def get_check(order: Order):
     for a in order:
         for b in a:
             total += ingr.get(b)[0]
+    return total
 
 
 def check_admin(number):

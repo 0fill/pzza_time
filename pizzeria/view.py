@@ -66,6 +66,8 @@ def chose_ingredinet(ingrediants: list):
                     return ingrediant
 
 
+
+
 def get_admin_id():
     return input("What is your id? ")
 

@@ -48,12 +48,12 @@ class Payment:
     @staticmethod
     def cash_order(order: Order):
         price = controls.get_check(order)
-        print(f'you payed {price} throu cash')
+        print(f'you payed {price} $ throu cash')
 
     @staticmethod
     def card_order(order: Order):
         price = controls.get_check(order)
-        print(f"you payed {price} throu card")
+        print(f"you payed {price} $ throu card")
 
 
 class Parses:
@@ -61,8 +61,11 @@ class Parses:
     @staticmethod
     def order_saves(order: Order):
         return_value: str = ""
-        for pizza in order.orders:
-            return_value += pizza.ingredients + '\n'
+        for pizza in order:
+            for ingr in pizza:
+                return_value += f"{ingr} "
+            return_value += "\n"
+        return return_value
 
 
 class Filemanager:
