@@ -1,4 +1,5 @@
 import json
+import controls
 from controls import *
 
 
@@ -28,6 +29,9 @@ class Pizza:
     def __str__(self):
         return f'{self.ingredients}'
 
+    def __getitem__(self, index):
+        return self.ingredients[index]
+
 
 class Order:
     def __init__(self):
@@ -43,11 +47,13 @@ class Order:
 class Payment:
     @staticmethod
     def cash_order(order: Order):
-        print(f'you payed {get_check(order)} throu cash')
+        price = controls.get_check(order)
+        print(f'you payed {price} throu cash')
 
     @staticmethod
     def card_order(order: Order):
-        print(f"you payed {get_check(order)} throu card")
+        price = controls.get_check(order)
+        print(f"you payed {price} throu card")
 
 
 class Parses:
@@ -58,10 +64,11 @@ class Parses:
         for pizza in order.orders:
             return_value += pizza.ingredients + '\n'
 
+
 class Filemanager:
 
     @staticmethod
-    def save(data):         #save order
+    def save(data):  #save order
         with open("pizzas/oreder.txt", 'w') as f:
             f.write(data)
 

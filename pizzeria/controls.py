@@ -18,7 +18,7 @@ def sucess_sale(sale: Sales, order: Order):
     sale.sales += 1
     for item in order:
         for ingredient in item.ingredients:
-            sale.profit += Filemanager.load_ingredients().get(ingredient)
+            sale.profit += Filemanager.load_ingredients().get(ingredient)[1]
 
 
 """def costum_pizza():
@@ -26,17 +26,17 @@ def sucess_sale(sale: Sales, order: Order):
         ingredient = chose_ingredinet(filemanager.load_ingredients().keys())
 """
 
+
 def get_check(order: Order):
     ingr = Filemanager.load_ingredients()
     total = 0
     for a in order:
         for b in a:
-            total += ingr.get(b)
+            total += ingr.get(b)[0]
 
-def check_admin(id):
-    if id == '78':
+
+def check_admin(number):
+    if number == '78':
         return True
     else:
         return False
-
-

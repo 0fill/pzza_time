@@ -42,13 +42,15 @@ def run():
             elif choice1 == 2:
                 while True:
                     ingrediant = chose_ingredinet(Filemanager.load_ingredients().keys())
-                    pizza_man.add_topping(ingrediant)
+                    if ingrediant is not None:
+                        pizza_man.add_topping(ingrediant)
                     if input("is it all? ").lower() == "y":
                         order.add_order(pizza_man.make_pizza())
                         break       #order
             elif choice1 == 3:
                 show_order(order)
         elif choice == 2:
+            pay_menu()
             choice2 = check_for_input(1, 2)
             if choice2 == 1:
                 Payment.cash_order(order)
@@ -60,9 +62,9 @@ def run():
             if check_admin(get_admin_id()):
                 while True:
                     menu_admin()
-                    choice1 = check_for_input(0,2)
+                    choice1 = check_for_input(0, 2)
                     if choice1 == 1:
-                        Filemanager.add_ingredient(get_ingredient(),float(get_profit()),float(get_price()))
+                        Filemanager.add_ingredient(get_ingredient(), float(get_profit()), float(get_price()))
                     elif choice1 == 2:
                         Filemanager.del_ingredient(chose_ingredinet(Filemanager.load_ingredients().keys()))
                     else:
