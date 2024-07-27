@@ -11,7 +11,9 @@ def main_menu():
 def order_menu():
     print(f"""
     1 -  chose pizza
-    2 -  costum pizza""")
+    2 -  costum pizza
+    3 -  view order
+""")
 
 
 def pizza_list():
@@ -31,8 +33,13 @@ def pay_menu():
     2- card    
     """)
 
+
 def menu_admin():
-    pass
+    print(f"""
+    1-add ingredient
+    2-remove ingredient
+    """)
+
 
 def get_input():
     return input("What do you want? ")
@@ -57,3 +64,24 @@ def chose_ingredinet(ingrediants: list):
             if choice in ingrediant:
                 if input(f"did you mean {ingrediant}?") == "y":
                     return ingrediant
+
+
+def get_admin_id():
+    return input("What is your id? ")
+
+
+def get_ingredient():
+    return input("write a new ingredient? ")
+
+
+def get_profit():
+    return input("write a profit for ingredient? ")
+
+
+def get_price():
+    return input("write a price for ingredient? ")
+
+
+def show_order(order):
+    for p in order:
+        print(f"you ordered pizza with {p}")

@@ -1,6 +1,7 @@
 from controls import *
 from models import *
 
+
 def run():
     info = Sales()
     order = Order()
@@ -10,7 +11,7 @@ def run():
         if choice == 1:
             order_menu()
             pizza_man = Topping()
-            choice1 = check_for_input(1, 2)
+            choice1 = check_for_input(1, 3)
             if choice1 == 1:
                 pizza_list()
                 choice2 = check_for_input(1, 5)
@@ -40,11 +41,13 @@ def run():
                                     .add_topping("spicy salami").make_pizza())
             elif choice1 == 2:
                 while True:
-                    ingrediant = chose_ingredinet(filemanager.load_ingredients().keys())
+                    ingrediant = chose_ingredinet(Filemanager.load_ingredients().keys())
                     pizza_man.add_topping(ingrediant)
                     if input("is it all? ").lower() == "y":
                         order.add_order(pizza_man.make_pizza())
-                        break
+                        break       #order
+            elif choice1 == 3:
+                show_order(order)
         elif choice == 2:
             choice2 = check_for_input(1, 2)
             if choice2 == 1:
@@ -52,12 +55,18 @@ def run():
             elif choice2 == 2:
                 Payment.card_order(order)
             sucess_sale(info, order)
-            filemanager.save(Parses.order_saves(order))
-        elif choice == 3:
-            pass        #soon
-
-
-
+            Filemanager.save(Parses.order_saves(order))     #payment
+        elif choice == 3:       #admin access
+            if check_admin(get_admin_id()):
+                while True:
+                    menu_admin()
+                    choice1 = check_for_input(0,2)
+                    if choice1 == 1:
+                        Filemanager.add_ingredient(get_ingredient(),float(get_profit()),float(get_price()))
+                    elif choice1 == 2:
+                        Filemanager.del_ingredient(chose_ingredinet(Filemanager.load_ingredients().keys()))
+                    else:
+                        break
 
 
 run()

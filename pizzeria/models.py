@@ -21,7 +21,7 @@ class Topping:  #pizza factory
         return Pizza(self.toppings)
 
 
-class Pizza():
+class Pizza:
     def __init__(self, ingredients):
         self.ingredients: list = ingredients
 
@@ -35,6 +35,9 @@ class Order:
 
     def add_order(self, order: Pizza):
         self.orders.append(order)
+
+    def __getitem__(self, index):
+        return self.orders[index]
 
 
 class Payment:
@@ -55,10 +58,10 @@ class Parses:
         for pizza in order.orders:
             return_value += pizza.ingredients + '\n'
 
-class filemanager:
+class Filemanager:
 
     @staticmethod
-    def save(data):
+    def save(data):         #save order
         with open("pizzas/oreder.txt", 'w') as f:
             f.write(data)
 
@@ -67,6 +70,12 @@ class filemanager:
         return json.load(open("pizzas/ingredients.json", 'r'))
 
     @staticmethod
-    def add_ingredient(ingredient, profit):
-        ingredients = filemanager.load_ingredients().update({ingredient: profit})
+    def add_ingredient(ingredient, profit, price):
+        ingredients: dict = Filemanager.load_ingredients()
+        ingredients.update({ingredient: (profit, price)})
+        json.dump(ingredients, open("pizzas/ingredients.json", 'w'))
+
+    @staticmethod
+    def del_ingredient(ingredient: str):
+        ingredients = Filemanager.load_ingredients().pop(ingredient)
         json.dump(ingredients, open("pizzas/ingredients.json", 'w'))
